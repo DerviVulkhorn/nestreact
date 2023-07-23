@@ -1,5 +1,6 @@
+import { Transaction } from "src/transaction/entities/transaction.entity";
 import { User } from "src/user/entities/user.entity";
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 
 @Entity()
 
@@ -16,6 +17,10 @@ export class Category {
     //Присоеденяем колонку
     @JoinColumn({name:'user_id'})
     user:User
+
+    //Связб с транзациями
+    @OneToMany(()=>Transaction, (transaction)=>transaction.category)
+    transaction: Transaction[]
 
     //описания даты создания
     @CreateDateColumn()

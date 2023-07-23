@@ -1,5 +1,6 @@
 //Данный класс позволяет создать таблицу в базе данных
 import { Category } from "src/category/entities/category.entity";
+import {Transaction} from "src/transaction/entities/transaction.entity"
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 //Создаём декоратор
@@ -32,5 +33,9 @@ export class User {
     //onDelete - что будет с зависимыми записями (CASCADE - удалить зависимые)
     @OneToMany(()=> Category,(category)=>category.user, {onDelete:'CASCADE'})
     categories:Category[]
+
+    //Для связей в транзакции
+    @OneToMany(()=>Transaction, (transaction)=>transaction.user, {onDelete:'CASCADE'})
+    transactions: Transaction[]
     
 }
