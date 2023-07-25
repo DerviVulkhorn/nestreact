@@ -1,3 +1,4 @@
+import { IsNumber } from "class-validator";
 import { Category } from "src/category/entities/category.entity";
 import { User } from "src/user/entities/user.entity";
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
@@ -14,7 +15,7 @@ export class Transaction {
     @Column()
     title:string
     @Column()
-    about:string
+    amount:number
 
     //описания даты создания
     @CreateDateColumn()
