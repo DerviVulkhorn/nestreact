@@ -103,4 +103,21 @@ export class TransactionService {
 
     return transaction;
   }
+
+  //Функция сортироваки по типу транзакции
+  async findAllByType(id:number, type:string){
+    const transaction = await this.transactionRepository.find({
+      where:{
+        user:{id},
+        type,
+      }
+    })
+
+    //Считаем общую сумму (сколько потратили или сколько получили)
+    //Функция reduce - позволяет перебрать массив
+    const total = transaction.reduce((acc, obj)=>acc+obj.amount,0)
+
+    return total
+  }
+
 }
