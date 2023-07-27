@@ -1,6 +1,11 @@
+//Для отображения роутов
+import {RouterProvider} from 'react-router-dom'
+//Импортируем наш роутер
+import { router } from './router/router'
+
 function App() {
 
-  return <h1 className="text-3xl font-bold underline"> Hello world! </h1>
+  return  <RouterProvider router={router}></RouterProvider>
     
   
 }

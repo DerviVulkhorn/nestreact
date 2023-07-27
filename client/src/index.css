@@ -15,10 +15,10 @@
 }
 @layer components{
   .btn {
-    @aplly flex gap-2 items-center text-sm text-white py-2 px-4 rounded-md
+    @aplly flex gap-2 items-center text-sm text-white py-2 px-4 rounded-md;
   }
   .input{
-    @aplly bg-transparent p-2 border bg-slate-700 placeholder:text-white border-slate-800 rounded-md outline-none focus:border-slate-300;
+    @aplly rounded-md border border-slate-800 bg-slate-700 bg-transparent p-2 outline-none placeholder:text-white focus:border-slate-300;
   }
   .container{
     @aplly max-w-[1000px];
@@ -26,9 +26,9 @@
 }
 @layer utilities{
   .btn-red {
-    @aply bg-rose-900 haver:bg-rose-800
+    @aply bg-rose-900 haver:bg-rose-800;
   }
   .btn-green{
-    @aply bg-green-600 haver:bg-green-800
+    @aply bg-green-600 haver:bg-green-800;
   }
 }
