@@ -1,9 +1,24 @@
 import { FC } from 'react'
-import {Link, NavLink} from 'react-router-dom'
+import {Link, NavLink, useNavigate} from 'react-router-dom'
 import {FaBtc} from 'react-icons/fa'
+import { useAuth } from '../hooks/useAuth'
+import { useAppDispatch } from '../store/hooks'
+import { logout } from '../store/user/userSlice'
+import { removeTokenFromLocalStorge } from '../helpers/localstore.helper'
+import {toast} from 'react-toastify'
 
 const Header:FC = () => {
-    const isAuth = false
+    const isAuth = useAuth()
+    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
+
+    const logoutHendler = () => {
+        dispatch(logout())
+        removeTokenFromLocalStorge('token')
+        toast.success('You logout system.')
+        navigate('/')
+    }
+
   return (
     <header className='flex items-center p-4 shadow-sm bg-slate-800 background-blur-sm'>
         <Link to='/'>
@@ -32,7 +47,8 @@ const Header:FC = () => {
         {
             //Если пользователь вошёл (isAuth = true)
             isAuth ? (
-                <button className='flex p-2 justify-center rounded-md bg-rose-600 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600'>
+                <button className='flex p-2 justify-center rounded-md bg-rose-600 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600'
+                onClick={logoutHendler}>
                     <span>Log out</span>
                 </button>
             ):(

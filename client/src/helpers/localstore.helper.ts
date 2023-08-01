@@ -12,3 +12,7 @@ export function setTokenToLocalStorage(key:string, token:string):void{
     //JSON.stringify(token) - получение строки с JSON-запроса
     localStorage.setItem(key, JSON.stringify(token))
 }
+
+export function removeTokenFromLocalStorge(key:string):void{
+    localStorage.removeItem(key)
+}
